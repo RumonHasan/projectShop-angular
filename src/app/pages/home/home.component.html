@@ -1,0 +1,18 @@
+<mat-drawer-container
+  [autosize]="drawerState"
+  class="min-h-full max-w-7xl mx-auto border-x"
+>
+  <mat-drawer mode="side" opened class="p-6">
+    <app-filters (showCategory)="onShowCategory($event)"></app-filters>
+  </mat-drawer>
+  <mat-drawer-content class="p-6">
+    <app-products-header
+      (columnsCountChange)="onColumnsCountChange($event)"
+    ></app-products-header>
+    <mat-grid-list gutterSize="16" [cols]="cols">
+      <mat-grid-tile *ngFor="let project of projects">
+        <app-project-card [project]="project"></app-project-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-drawer-content>
+</mat-drawer-container>
